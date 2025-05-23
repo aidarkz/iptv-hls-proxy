@@ -24,7 +24,8 @@ def start_ffmpeg(channel_id: int):
         "-hls_segment_filename", f"/dev/shm/{channel_id}/segment_%03d.ts",
         f"/dev/shm/{channel_id}/playlist.m3u8"
     ]
-    subprocess.Popen(cmd)
+    with open(f"/opt/hlsp/log_{channel_id}.txt", "w") as log:
+    subprocess.Popen(cmd, stdout=log, stderr=log)
 
 @app.get("/stream/{channel_id}.m3u8")
 async def stream(channel_id: int):
