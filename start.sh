@@ -4,7 +4,7 @@
 mkdir -p /dev/shm/hls
 
 # Запуск ffmpeg рестриминга
-ffmpeg -re -i "http://SOURCE_URL" \
+ffmpeg -re -i "https://m3u.ch/pl/f4cb98b64c59794f61effac58c5f57d2_7eeb72b1774fb97d1d7d662a7a519788.m3u" \
   -c copy \
   -f hls \
   -hls_time 3 \
