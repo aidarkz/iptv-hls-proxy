@@ -1,0 +1,287 @@
+#EXTM3U
+#EXTINF:-1 tvg-id="635431" group-title="All",Sky Sports Main Event FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635431&extension=m3u8
+#EXTINF:-1 tvg-id="590608" group-title="All",Sky Sports Main Event FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590608&extension=m3u8
+#EXTINF:-1 tvg-id="590607" group-title="All",Sky Sports Main Event HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590607&extension=m3u8
+#EXTINF:-1 tvg-id="590606" group-title="All",Sky Sports Main Event SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590606&extension=m3u8
+#EXTINF:-1 tvg-id="635430" group-title="All",Sky Sports Premier League FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635430&extension=m3u8
+#EXTINF:-1 tvg-id="590605" group-title="All",Sky Sports Premier League FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590605&extension=m3u8
+#EXTINF:-1 tvg-id="590604" group-title="All",Sky Sports Premier League HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590604&extension=m3u8
+#EXTINF:-1 tvg-id="590603" group-title="All",Sky Sports Premier League SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590603&extension=m3u8
+#EXTINF:-1 tvg-id="635429" group-title="All",Sky Sports Football FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635429&extension=m3u8
+#EXTINF:-1 tvg-id="590602" group-title="All",Sky Sports Football FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590602&extension=m3u8
+#EXTINF:-1 tvg-id="590601" group-title="All",Sky Sports Football HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590601&extension=m3u8
+#EXTINF:-1 tvg-id="590600" group-title="All",Sky Sports Football SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590600&extension=m3u8
+#EXTINF:-1 tvg-id="635428" group-title="All",Sky Sports Cricket FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635428&extension=m3u8
+#EXTINF:-1 tvg-id="590599" group-title="All",Sky Sports Cricket FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590599&extension=m3u8
+#EXTINF:-1 tvg-id="590598" group-title="All",Sky Sports Cricket HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590598&extension=m3u8
+#EXTINF:-1 tvg-id="590597" group-title="All",Sky Sports Cricket SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590597&extension=m3u8
+#EXTINF:-1 tvg-id="635427" group-title="All",Sky Sports Golf FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635427&extension=m3u8
+#EXTINF:-1 tvg-id="590596" group-title="All",Sky Sports Golf FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590596&extension=m3u8
+#EXTINF:-1 tvg-id="590595" group-title="All",Sky Sports Golf HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590595&extension=m3u8
+#EXTINF:-1 tvg-id="590594" group-title="All",Sky Sports Golf SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590594&extension=m3u8
+#EXTINF:-1 tvg-id="635426" group-title="All",Sky Sports F1 FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635426&extension=m3u8
+#EXTINF:-1 tvg-id="590593" group-title="All",Sky Sports F1 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590593&extension=m3u8
+#EXTINF:-1 tvg-id="590592" group-title="All",Sky Sports F1 HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590592&extension=m3u8
+#EXTINF:-1 tvg-id="590591" group-title="All",Sky Sports F1 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590591&extension=m3u8
+#EXTINF:-1 tvg-id="635425" group-title="All",Sky Sports Tennis FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635425&extension=m3u8
+#EXTINF:-1 tvg-id="590590" group-title="All",Sky Sports Tennis FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590590&extension=m3u8
+#EXTINF:-1 tvg-id="590589" group-title="All",Sky Sports Tennis HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590589&extension=m3u8
+#EXTINF:-1 tvg-id="590588" group-title="All",Sky Sports Tennis SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590588&extension=m3u8
+#EXTINF:-1 tvg-id="635424" group-title="All",Sky Sports Action FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635424&extension=m3u8
+#EXTINF:-1 tvg-id="590587" group-title="All",Sky Sports Action FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590587&extension=m3u8
+#EXTINF:-1 tvg-id="590586" group-title="All",Sky Sports Action HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590586&extension=m3u8
+#EXTINF:-1 tvg-id="590585" group-title="All",Sky Sports Action SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590585&extension=m3u8
+#EXTINF:-1 tvg-id="635423" group-title="All",Sky Sports News FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635423&extension=m3u8
+#EXTINF:-1 tvg-id="590584" group-title="All",Sky Sports News FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590584&extension=m3u8
+#EXTINF:-1 tvg-id="590583" group-title="All",Sky Sports News HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590583&extension=m3u8
+#EXTINF:-1 tvg-id="590582" group-title="All",Sky Sports News SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590582&extension=m3u8
+#EXTINF:-1 tvg-id="635419" group-title="All",TNT Sports 1 50 FPS FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635419&extension=m3u8
+#EXTINF:-1 tvg-id="590581" group-title="All",TNT Sports 1 50 FPS 5.1 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590581&extension=m3u8
+#EXTINF:-1 tvg-id="590580" group-title="All",TNT Sports 1 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590580&extension=m3u8
+#EXTINF:-1 tvg-id="590579" group-title="All",TNT Sports 1 HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590579&extension=m3u8
+#EXTINF:-1 tvg-id="590578" group-title="All",TNT Sports 1 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590578&extension=m3u8
+#EXTINF:-1 tvg-id="635418" group-title="All",TNT Sports 2 50 FPS FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635418&extension=m3u8
+#EXTINF:-1 tvg-id="590577" group-title="All",TNT Sports 2 50 FPS 5.1 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590577&extension=m3u8
+#EXTINF:-1 tvg-id="590576" group-title="All",TNT Sports 2 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590576&extension=m3u8
+#EXTINF:-1 tvg-id="590575" group-title="All",TNT Sports 2 HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590575&extension=m3u8
+#EXTINF:-1 tvg-id="590574" group-title="All",TNT Sports 2 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590574&extension=m3u8
+#EXTINF:-1 tvg-id="635422" group-title="All",Sky Sports + FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635422&extension=m3u8
+#EXTINF:-1 tvg-id="590573" group-title="All",Sky Sports + FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590573&extension=m3u8
+#EXTINF:-1 tvg-id="590572" group-title="All",Sky Sports + HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590572&extension=m3u8
+#EXTINF:-1 tvg-id="590571" group-title="All",Sky Sports + SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590571&extension=m3u8
+#EXTINF:-1 tvg-id="590570" group-title="All",Eurosport 1 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590570&extension=m3u8
+#EXTINF:-1 tvg-id="590569" group-title="All",Eurosport 1 HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590569&extension=m3u8
+#EXTINF:-1 tvg-id="590568" group-title="All",Eurosport 1 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590568&extension=m3u8
+#EXTINF:-1 tvg-id="590567" group-title="All",Eurosport 2 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590567&extension=m3u8
+#EXTINF:-1 tvg-id="590566" group-title="All",Eurosport 2 HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590566&extension=m3u8
+#EXTINF:-1 tvg-id="590565" group-title="All",Eurosport 2 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590565&extension=m3u8
+#EXTINF:-1 tvg-id="635421" group-title="All",Sky Sports Racing FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635421&extension=m3u8
+#EXTINF:-1 tvg-id="590564" group-title="All",Sky Sports Racing FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590564&extension=m3u8
+#EXTINF:-1 tvg-id="590563" group-title="All",Sky Sports Racing HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590563&extension=m3u8
+#EXTINF:-1 tvg-id="590562" group-title="All",Sky Sports Racing SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590562&extension=m3u8
+#EXTINF:-1 tvg-id="635420" group-title="All",Sky Sports Mix FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635420&extension=m3u8
+#EXTINF:-1 tvg-id="590561" group-title="All",Sky Sports Mix FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590561&extension=m3u8
+#EXTINF:-1 tvg-id="590560" group-title="All",Sky Sports Mix HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590560&extension=m3u8
+#EXTINF:-1 tvg-id="590559" group-title="All",Sky Sports Mix SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590559&extension=m3u8
+#EXTINF:-1 tvg-id="635417" group-title="All",TNT Sports 3 50 FPS FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635417&extension=m3u8
+#EXTINF:-1 tvg-id="590558" group-title="All",TNT Sports 3 50 FPS 5.1 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590558&extension=m3u8
+#EXTINF:-1 tvg-id="590557" group-title="All",TNT Sports 3 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590557&extension=m3u8
+#EXTINF:-1 tvg-id="590556" group-title="All",TNT Sports 3 HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590556&extension=m3u8
+#EXTINF:-1 tvg-id="590555" group-title="All",TNT Sports 3 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590555&extension=m3u8
+#EXTINF:-1 tvg-id="590554" group-title="All",MUTV FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590554&extension=m3u8
+#EXTINF:-1 tvg-id="590553" group-title="All",MUTV HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590553&extension=m3u8
+#EXTINF:-1 tvg-id="590552" group-title="All",MUTV SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590552&extension=m3u8
+#EXTINF:-1 tvg-id="590551" group-title="All",Premier Sports 1 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590551&extension=m3u8
+#EXTINF:-1 tvg-id="590550" group-title="All",Premier Sports 1 HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590550&extension=m3u8
+#EXTINF:-1 tvg-id="590549" group-title="All",Premier Sports 1 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590549&extension=m3u8
+#EXTINF:-1 tvg-id="590548" group-title="All",Premier Sports 2 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590548&extension=m3u8
+#EXTINF:-1 tvg-id="590547" group-title="All",Premier Sports 2 HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590547&extension=m3u8
+#EXTINF:-1 tvg-id="590546" group-title="All",Premier Sports 2 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590546&extension=m3u8
+#EXTINF:-1 tvg-id="635416" group-title="All",TNT Sports 4 50 FPS FHD (5.1)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=635416&extension=m3u8
+#EXTINF:-1 tvg-id="590545" group-title="All",TNT Sports 4 50 FPS 5.1 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590545&extension=m3u8
+#EXTINF:-1 tvg-id="590544" group-title="All",TNT Sports 4 FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590544&extension=m3u8
+#EXTINF:-1 tvg-id="590543" group-title="All",TNT Sports 4 HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590543&extension=m3u8
+#EXTINF:-1 tvg-id="590542" group-title="All",TNT Sports 4 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590542&extension=m3u8
+#EXTINF:-1 tvg-id="590541" group-title="All",LFC FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590541&extension=m3u8
+#EXTINF:-1 tvg-id="590540" group-title="All",LFC HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590540&extension=m3u8
+#EXTINF:-1 tvg-id="590539" group-title="All",LFC SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590539&extension=m3u8
+#EXTINF:-1 tvg-id="590538" group-title="All",Racing TV FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590538&extension=m3u8
+#EXTINF:-1 tvg-id="590537" group-title="All",Racing TV HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590537&extension=m3u8
+#EXTINF:-1 tvg-id="590536" group-title="All",Racing TV SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590536&extension=m3u8
+#EXTINF:-1 tvg-id="590532" group-title="All",TNT Sports Box Office FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590532&extension=m3u8
+#EXTINF:-1 tvg-id="590531" group-title="All",TNT Sports Box Office HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590531&extension=m3u8
+#EXTINF:-1 tvg-id="590530" group-title="All",TNT Sports Box Office SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590530&extension=m3u8
+#EXTINF:-1 tvg-id="590529" group-title="All",Sky Sports Box Office FHD (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590529&extension=m3u8
+#EXTINF:-1 tvg-id="590528" group-title="All",Sky Sports Box Office HD (720p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590528&extension=m3u8
+#EXTINF:-1 tvg-id="590527" group-title="All",Sky Sports Box Office SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590527&extension=m3u8
+#EXTINF:-1 tvg-id="590522" group-title="All",TNT Sports 5 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590522&extension=m3u8
+#EXTINF:-1 tvg-id="590520" group-title="All",TNT Sports 6 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590520&extension=m3u8
+#EXTINF:-1 tvg-id="590518" group-title="All",TNT Sports 7 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590518&extension=m3u8
+#EXTINF:-1 tvg-id="590516" group-title="All",TNT Sports 8 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590516&extension=m3u8
+#EXTINF:-1 tvg-id="590514" group-title="All",TNT Sports 9 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590514&extension=m3u8
+#EXTINF:-1 tvg-id="590512" group-title="All",TNT Sports 10 SD (576p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=590512&extension=m3u8
+#EXTINF:-1 tvg-id="565433" group-title="All",Sky Sports Box Office HEVC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=565433&extension=m3u8
+#EXTINF:-1 tvg-id="565432" group-title="All",Sky Sports Box Office HEVC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=565432&extension=m3u8
+#EXTINF:-1 tvg-id="565420" group-title="All",Sky Sports Main Event UHD
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=565420&extension=m3u8
+#EXTINF:-1 tvg-id="565419" group-title="All",Sky Sports F1 UHD
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=565419&extension=m3u8
+#EXTINF:-1 tvg-id="565418" group-title="All",TNT Sports Ultimate UHD
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=565418&extension=m3u8
+#EXTINF:-1 tvg-id="565417" group-title="All",Sky Sports UHD 1 (Events Only)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=565417&extension=m3u8
+#EXTINF:-1 tvg-id="565416" group-title="All",Sky Sports UHD 2 (Events Only)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=565416&extension=m3u8
+#EXTINF:-1 tvg-id="565415" group-title="All",Sky Sports UHD 3 (Events Only)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=565415&extension=m3u8
+#EXTINF:-1 tvg-id="565414" group-title="All",Sky Sports UHD 4 (Events Only)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=565414&extension=m3u8
+#EXTINF:-1 tvg-id="565413" group-title="All",Sky Sports UHD 5 (Events Only)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=565413&extension=m3u8
+#EXTINF:-1 tvg-id="533806" group-title="All",Sky Sports News HVEC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533806&extension=m3u8
+#EXTINF:-1 tvg-id="533805" group-title="All",Sky Sports News HVEC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533805&extension=m3u8
+#EXTINF:-1 tvg-id="533804" group-title="All",Sky Sports Main Event HVEC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533804&extension=m3u8
+#EXTINF:-1 tvg-id="533803" group-title="All",Sky Sports Main Event HVEC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533803&extension=m3u8
+#EXTINF:-1 tvg-id="533802" group-title="All",Sky Sports Premier League HVEC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533802&extension=m3u8
+#EXTINF:-1 tvg-id="533801" group-title="All",Sky Sports Premier League HVEC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533801&extension=m3u8
+#EXTINF:-1 tvg-id="533800" group-title="All",Sky Sports Football HVEC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533800&extension=m3u8
+#EXTINF:-1 tvg-id="533799" group-title="All",Sky Sports Football HVEC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533799&extension=m3u8
+#EXTINF:-1 tvg-id="533798" group-title="All",Sky Sports Cricket HVEC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533798&extension=m3u8
+#EXTINF:-1 tvg-id="533797" group-title="All",Sky Sports Cricket HVEC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533797&extension=m3u8
+#EXTINF:-1 tvg-id="533796" group-title="All",Sky Sports Golf HVEC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533796&extension=m3u8
+#EXTINF:-1 tvg-id="533795" group-title="All",Sky Sports Golf HVEC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533795&extension=m3u8
+#EXTINF:-1 tvg-id="533794" group-title="All",Sky Sports F1 HVEC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533794&extension=m3u8
+#EXTINF:-1 tvg-id="533793" group-title="All",Sky Sports F1 HVEC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533793&extension=m3u8
+#EXTINF:-1 tvg-id="533792" group-title="All",Sky Sports Action HVEC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533792&extension=m3u8
+#EXTINF:-1 tvg-id="533791" group-title="All",Sky Sports Action HVEC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533791&extension=m3u8
+#EXTINF:-1 tvg-id="533790" group-title="All",Sky Sports + HVEC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533790&extension=m3u8
+#EXTINF:-1 tvg-id="533789" group-title="All",Sky Sports + HVEC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533789&extension=m3u8
+#EXTINF:-1 tvg-id="533788" group-title="All",Sky Sports Mix HVEC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533788&extension=m3u8
+#EXTINF:-1 tvg-id="533787" group-title="All",Sky Sports Mix HVEC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533787&extension=m3u8
+#EXTINF:-1 tvg-id="533786" group-title="All",Sky Sports Racing HVEC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533786&extension=m3u8
+#EXTINF:-1 tvg-id="533785" group-title="All",Sky Sports Racing HVEC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=533785&extension=m3u8
+#EXTINF:-1 tvg-id="587023" group-title="All",TNT Sports 1 HEVC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=587023&extension=m3u8
+#EXTINF:-1 tvg-id="587022" group-title="All",TNT Sports 1 HEVC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=587022&extension=m3u8
+#EXTINF:-1 tvg-id="587021" group-title="All",TNT Sports 2 HEVC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=587021&extension=m3u8
+#EXTINF:-1 tvg-id="587020" group-title="All",TNT Sports 2 HEVC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=587020&extension=m3u8
+#EXTINF:-1 tvg-id="587019" group-title="All",TNT Sports 3 HEVC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=587019&extension=m3u8
+#EXTINF:-1 tvg-id="587018" group-title="All",TNT Sports 3 HEVC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=587018&extension=m3u8
+#EXTINF:-1 tvg-id="587017" group-title="All",TNT Sports 4 HEVC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=587017&extension=m3u8
+#EXTINF:-1 tvg-id="587016" group-title="All",TNT Sports 4 HEVC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=587016&extension=m3u8
+#EXTINF:-1 tvg-id="587015" group-title="All",TNT Sports Box Office HEVC HB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=587015&extension=m3u8
+#EXTINF:-1 tvg-id="587014" group-title="All",TNT Sports Box Office HEVC LB (1080p)
+http://ledir.thund.re:80/play/live.php?mac=00:1A:79:c5:94:26&stream=587014&extension=m3u8
