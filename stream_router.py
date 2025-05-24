@@ -1,18 +1,25 @@
+
 #!/usr/bin/env python3
 import os
+import time
 import subprocess
+import threading
 from fastapi import FastAPI, Response
 from fastapi.responses import RedirectResponse
 import uvicorn
 
 app = FastAPI()
+playlist_path = "/opt/hlsp/playlist.m3u"
 
-# Загрузка потоков из плейлиста
-with open("/opt/hlsp/playlist.m3u", "r") as f:
+with open(playlist_path, "r") as f:
     playlist = [line.strip() for line in f if line.strip().startswith("http")]
 
+processes = {}
+last_access = {}
+timeout_seconds = 60
+
 def ffmpeg_running(channel_id: int) -> bool:
-    return os.path.exists(f"/dev/shm/{channel_id}/playlist.m3u8")
+    return channel_id in processes and processes[channel_id].poll() is None
 
 def start_ffmpeg(channel_id: int):
     os.makedirs(f"/dev/shm/{channel_id}", exist_ok=True)
@@ -25,7 +32,28 @@ def start_ffmpeg(channel_id: int):
         "-hls_segment_filename", f"/dev/shm/{channel_id}/segment_%03d.ts",
         f"/dev/shm/{channel_id}/playlist.m3u8"
     ]
-    subprocess.Popen(cmd, stdout=log_file, stderr=log_file)
+    proc = subprocess.Popen(cmd, stdout=log_file, stderr=log_file)
+    processes[channel_id] = proc
+    last_access[channel_id] = time.time()
+
+def stop_ffmpeg(channel_id: int):
+    proc = processes.get(channel_id)
+    if proc and proc.poll() is None:
+        proc.terminate()
+        proc.wait()
+    processes.pop(channel_id, None)
+    last_access.pop(channel_id, None)
+    os.system(f"rm -rf /dev/shm/{channel_id}")
+
+def monitor_processes():
+    while True:
+        time.sleep(10)
+        now = time.time()
+        for channel_id in list(last_access.keys()):
+            if now - last_access[channel_id] > timeout_seconds:
+                stop_ffmpeg(channel_id)
+
+threading.Thread(target=monitor_processes, daemon=True).start()
 
 @app.get("/stream/{channel_id}.m3u8")
 async def stream(channel_id: int):
@@ -33,6 +61,7 @@ async def stream(channel_id: int):
         return Response("Channel not found", status_code=404)
     if not ffmpeg_running(channel_id):
         start_ffmpeg(channel_id)
+    last_access[channel_id] = time.time()
     return RedirectResponse(url=f"/streams/{channel_id}/playlist.m3u8")
 
 @app.get("/log/{channel_id}")
