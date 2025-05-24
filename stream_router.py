@@ -32,16 +32,21 @@ def start_ffmpeg(channel_id: int):
     os.makedirs(f"/dev/shm/{channel_id}", exist_ok=True)
     log_file = open(f"/opt/hlsp/log_{channel_id}.txt", "w")
     cmd = [
-        "ffmpeg", "-re", "-i", playlist[channel_id],
+        "ffmpeg", "-re",
+        "-user_agent", "VLC/3.0.18 LibVLC/3.0.18",
+        "-i", playlist[channel_id],
         "-c", "copy", "-f", "hls",
         "-hls_time", "3", "-hls_list_size", "5",
         "-hls_flags", "delete_segments+program_date_time",
         "-hls_segment_filename", f"/dev/shm/{channel_id}/segment_%03d.ts",
         f"/dev/shm/{channel_id}/playlist.m3u8"
     ]
-    proc = subprocess.Popen(cmd, stdout=log_file, stderr=log_file)
-    processes[channel_id] = proc
-    last_access[channel_id] = time.time()
+    try:
+        proc = subprocess.Popen(cmd, stdout=log_file, stderr=log_file)
+        processes[channel_id] = proc
+        last_access[channel_id] = time.time()
+    except Exception as e:
+        log_file.write(f"Failed to start ffmpeg: {str(e)}\n")
 
 def stop_ffmpeg(channel_id: int):
     proc = processes.get(channel_id)
