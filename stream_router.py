@@ -9,7 +9,7 @@ app = FastAPI()
 templates = Jinja2Templates(directory="/opt/hlsp/templates")
 
 PLAYLIST_PATH = "/opt/hlsp/playlist.m3u"
-PLAYLIST_SOURCE_URL = "https://example.com/myplaylist.m3u"
+PLAYLIST_SOURCE_URL = "https://m3u.ch/pl/f4cb98b64c59794f61effac58c5f57d2_7eeb72b1774fb97d1d7d662a7a519788.m3u"
 UPDATE_INTERVAL = 600
 
 playlist, channel_map = [], {}
