@@ -16,6 +16,7 @@ def ffmpeg_running(channel_id: int) -> bool:
 
 def start_ffmpeg(channel_id: int):
     os.makedirs(f"/dev/shm/{channel_id}", exist_ok=True)
+    log_file = open(f"/opt/hlsp/log_{channel_id}.txt", "w")
     cmd = [
         "ffmpeg", "-re", "-i", playlist[channel_id],
         "-c", "copy", "-f", "hls",
@@ -24,8 +25,7 @@ def start_ffmpeg(channel_id: int):
         "-hls_segment_filename", f"/dev/shm/{channel_id}/segment_%03d.ts",
         f"/dev/shm/{channel_id}/playlist.m3u8"
     ]
-    with open(f"/opt/hlsp/log_{channel_id}.txt", "w") as log:
-    subprocess.Popen(cmd, stdout=log, stderr=log)
+    subprocess.Popen(cmd, stdout=log_file, stderr=log_file)
 
 @app.get("/stream/{channel_id}.m3u8")
 async def stream(channel_id: int):
@@ -34,6 +34,14 @@ async def stream(channel_id: int):
     if not ffmpeg_running(channel_id):
         start_ffmpeg(channel_id)
     return RedirectResponse(url=f"/streams/{channel_id}/playlist.m3u8")
+
+@app.get("/log/{channel_id}")
+async def get_log(channel_id: int):
+    path = f"/opt/hlsp/log_{channel_id}.txt"
+    if not os.path.exists(path):
+        return Response("Log not found", status_code=404)
+    with open(path) as f:
+        return Response(f.read(), media_type="text/plain")
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=7000)
