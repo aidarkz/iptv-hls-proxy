@@ -67,21 +67,38 @@ def ffmpeg_running(channel_id):
 
 def start_ffmpeg(channel_id):
     os.makedirs(f"/dev/shm/{channel_id}", exist_ok=True)
-    log_file = open(f"/opt/hlsp/log_{channel_id}.txt", "w")
+    log_path = f"/opt/hlsp/log_{channel_id}.txt"
+    log_file = open(log_path, "w")
+
+    input_url = playlist[channel_id]
+    output_m3u8 = f"/dev/shm/{channel_id}/playlist.m3u8"
+    segment_pattern = f"/dev/shm/{channel_id}/segment_%03d.ts"
+
     cmd = [
-        "ffmpeg", "-re", "-user_agent", "VLC/3.0.18 LibVLC/3.0.18", "-i", playlist[channel_id],
-        "-c", "copy", "-f", "hls", "-hls_time", "3", "-hls_list_size", "5",
-        "-hls_flags", "delete_segments+program_date_time",
-        "-hls_segment_filename", f"/dev/shm/{channel_id}/segment_%03d.ts",
-        f"/dev/shm/{channel_id}/playlist.m3u8"
+        "ffmpeg",
+        "-re",
+        "-user_agent", "VLC/3.0.18 LibVLC/3.0.18",
+        "-i", input_url,
+        "-c", "copy",
+        "-f", "hls",
+        "-hls_time", "3",
+        "-hls_list_size", "5",
+        "-hls_flags", "program_date_time",
+        "-method", "PUT",
+        "-hls_segment_filename", segment_pattern,
+        output_m3u8
     ]
+
     try:
         proc = subprocess.Popen(cmd, stdout=log_file, stderr=log_file)
         processes[channel_id] = proc
         last_access[channel_id] = time.time()
-        print(f"[START] Channel {channel_id} -> {playlist[channel_id]}")
+        print(f"Started ffmpeg for channel {channel_id}")
     except Exception as e:
-        log_file.write(f"FFmpeg start error: {e}\n")
+        error_msg = f"Failed to start ffmpeg for channel {channel_id}: {e}\n"
+        log_file.write(error_msg)
+        print(error_msg)
+
 
 def stop_ffmpeg(channel_id):
     proc = processes.get(channel_id)
