@@ -1,42 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title>IPTV Stream Admin</title>
-    <meta http-equiv="refresh" content="5">
+    <meta charset="utf-8">
+    <title>IPTV Плейлист</title>
     <style>
-        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
-        th, td { padding: 10px; border: 1px solid #ccc; text-align: left; }
-        th { background-color: #f3f3f3; }
-        .running { color: green; font-weight: bold; }
-        .stopped { color: red; font-weight: bold; }
+        body { font-family: monospace; background: #1e1e1e; color: #d4d4d4; padding: 20px; }
+        h1 { color: #0f0; }
+        pre { background: #2d2d2d; padding: 10px; border-radius: 5px; overflow-x: auto; }
+        a { color: #6cf; }
     </style>
 </head>
 <body>
-    <h2>🎛️ IPTV Proxy Admin</h2>
-    <table>
-        <thead>
-            <tr><th>#</th><th>Канал</th><th>Статус</th><th>Последний запрос</th><th>Управление</th></tr>
-        </thead>
-        <tbody>
-        {% for ch in status %}
-            <tr>
-                <td>{{ ch.id }}</td>
-                <td>{{ ch.name }}</td>
-                <td class="{{ 'running' if ch.active else 'stopped' }}">
-                    {{ '▶️ Активен' if ch.active else '⛔ Остановлен' }}
-                </td>
-                <td>{{ ch.last }} сек</td>
-                <td>
-                    {% if ch.active %}
-                    <form method="post" action="/stop/{{ ch.id }}">
-                        <button type="submit">⏹ Остановить</button>
-                    </form>
-                    {% else %}-{% endif %}
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+    <h1>Текущий IPTV Плейлист</h1>
+    <a href="/playlist" download>📥 Скачать playlist.m3u</a>
+    <pre>{{ playlist }}</pre>
 </body>
 </html>
