@@ -55,7 +55,10 @@ def start_ffmpeg(channel_id):
     os.makedirs(f"/dev/shm/{channel_id}", exist_ok=True)
     log_file = open(f"/opt/hlsp/log_{channel_id}.txt", "w")
     cmd = [
-        "ffmpeg", "-re", "-user_agent", "VLC/3.0.18 LibVLC/3.0.18", "-i", playlist[channel_id],
+        "ffmpeg",
+        "-headers", "Referer: http://localhost\r\n",
+        "-user_agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/125.0.0.0 Safari/537.36",
+        "-i", playlist[channel_id],
         "-c", "copy", "-f", "hls", "-hls_time", "3", "-hls_list_size", "5",
         "-hls_flags", "delete_segments+program_date_time",
         "-hls_segment_filename", f"/dev/shm/{channel_id}/segment_%03d.ts",
