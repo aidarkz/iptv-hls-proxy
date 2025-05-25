@@ -2,17 +2,51 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>IPTV Плейлист</title>
+    <title>IPTV Admin</title>
     <style>
-        body { font-family: monospace; background: #1e1e1e; color: #d4d4d4; padding: 20px; }
+        body { font-family: sans-serif; background: #121212; color: #eee; padding: 20px; }
         h1 { color: #0f0; }
-        pre { background: #2d2d2d; padding: 10px; border-radius: 5px; overflow-x: auto; }
-        a { color: #6cf; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 8px 12px; border: 1px solid #444; text-align: left; }
+        tr:nth-child(even) { background-color: #1e1e1e; }
+        a { color: #6cf; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        .btn { color: red; }
     </style>
 </head>
 <body>
-    <h1>Текущий IPTV Плейлист</h1>
-    <a href="/playlist" download>📥 Скачать playlist.m3u</a>
-    <pre>{{ playlist }}</pre>
+    <h1>Админка IPTV</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Канал</th>
+                <th>ID</th>
+                <th>Активен</th>
+                <th>Последний доступ (сек)</th>
+                <th>Ссылка</th>
+                <th>Управление</th>
+                <th>Лог</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ch in status %}
+            <tr>
+                <td>{{ ch.name }}</td>
+                <td>{{ ch.id }}</td>
+                <td>{{ "🟢" if ch.active else "⚪" }}</td>
+                <td>{{ ch.last }}</td>
+                <td><a href="/stream/{{ ch.id }}.m3u8" target="_blank">Ссылка</a></td>
+                <td>
+                    {% if ch.active %}
+                        <form action="/stop/{{ ch.id }}" method="post" style="display:inline;">
+                            <button class="btn" type="submit">Остановить</button>
+                        </form>
+                    {% endif %}
+                </td>
+                <td><a href="/log/{{ ch.id }}" target="_blank">📄</a></td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>
