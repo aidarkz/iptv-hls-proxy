@@ -10,21 +10,23 @@ templates = Jinja2Templates(directory="/opt/hlsp/templates")
 
 PLAYLIST_PATH = "/opt/hlsp/playlist.m3u"
 PLAYLIST_SOURCE_URL = "https://m3u.ch/pl/f4cb98b64c59794f61effac58c5f57d2_7eeb72b1774fb97d1d7d662a7a519788.m3u"
-UPDATE_INTERVAL = 600
-timeout_seconds = 600
-DEBUG_KEEP_HLS = True  # ← не удалять HLS-файлы
+UPDATE_INTERVAL = 600  # 10 минут
 
 playlist, channel_map = [], {}
 processes, last_access = {}, {}
+timeout_seconds = 60
 
 def download_playlist():
     try:
         r = requests.get(PLAYLIST_SOURCE_URL, timeout=10)
         if r.status_code == 200:
-            with open(PLAYLIST_PATH, "w", encoding="utf-8") as f: f.write(r.text)
-            print("✅ Playlist updated.")
+            with open(PLAYLIST_PATH, "w", encoding="utf-8") as f:
+                f.write(r.text)
+            print("✔️ Playlist updated successfully.")
+        else:
+            print(f"⚠️ Playlist download failed: status {r.status_code}")
     except Exception as e:
-        print(f"[ERROR] Playlist download failed: {e}")
+        print(f"❌ Playlist update error: {e}")
 
 def load_playlist_and_channels():
     global playlist, channel_map
@@ -39,10 +41,12 @@ def load_playlist_and_channels():
                     name = name.lower().replace(" ", "_").replace("/", "_").replace("&", "and")
                 elif line.startswith("http"):
                     playlist.append(line)
-                    if name: channel_map[name] = len(playlist) - 1
+                    if name:
+                        channel_map[name] = len(playlist) - 1
                     name = None
+        print(f"📺 Loaded {len(channel_map)} channels.")
     except Exception as e:
-        print(f"[ERROR] Playlist parsing failed: {e}")
+        print(f"❌ Failed to load playlist: {e}")
 
 def update_loop():
     while True:
@@ -51,66 +55,38 @@ def update_loop():
         time.sleep(UPDATE_INTERVAL)
 
 def ffmpeg_running(channel_id):
-    # Проверка по process и файлам
-    proc_ok = channel_id in processes and processes[channel_id].poll() is None
-    m3u_path = f"/dev/shm/{channel_id}/playlist.m3u8"
-    ts_path = f"/dev/shm/{channel_id}/segment_000.ts"
-
-    if not proc_ok:
-        # Если есть .ts файлы, но нет playlist.m3u8 — перезапускаем
-        if os.path.exists(ts_path) and not os.path.exists(m3u_path):
-            print(f"[WARN] FFmpeg output corrupted for {channel_id}. Restarting.")
-            stop_ffmpeg(channel_id)
-            start_ffmpeg(channel_id)
-        return False
-    return True
+    return channel_id in processes and processes[channel_id].poll() is None
 
 def start_ffmpeg(channel_id):
     os.makedirs(f"/dev/shm/{channel_id}", exist_ok=True)
     log_path = f"/opt/hlsp/log_{channel_id}.txt"
     log_file = open(log_path, "w")
-
-    input_url = playlist[channel_id]
-    output_m3u8 = f"/dev/shm/{channel_id}/playlist.m3u8"
-    segment_pattern = f"/dev/shm/{channel_id}/segment_%03d.ts"
-
+    stream_url = playlist[channel_id]
     cmd = [
-        "ffmpeg",
-        "-re",
-        "-user_agent", "VLC/3.0.18 LibVLC/3.0.18",
-        "-i", input_url,
-        "-c:v", "copy",
-        "-c:a", "copy",
-        "-f", "hls",
-        "-hls_time", "3",
-        "-hls_list_size", "5",
-        "-hls_segment_filename", segment_pattern,
-        "-hls_flags", "program_date_time+independent_segments",
-        output_m3u8
+        "ffmpeg", "-re", "-user_agent", "VLC/3.0.18 LibVLC/3.0.18", "-i", stream_url,
+        "-c", "copy", "-f", "hls", "-hls_time", "4", "-hls_list_size", "5",
+        "-hls_flags", "delete_segments+program_date_time",
+        "-hls_segment_filename", f"/dev/shm/{channel_id}/segment_%03d.ts",
+        f"/dev/shm/{channel_id}/playlist.m3u8"
     ]
-
     try:
         proc = subprocess.Popen(cmd, stdout=log_file, stderr=log_file)
         processes[channel_id] = proc
         last_access[channel_id] = time.time()
-        print(f"✅ Started ffmpeg for channel {channel_id}")
+        print(f"▶️ Started FFmpeg for channel {channel_id}")
     except Exception as e:
-        msg = f"❌ Failed to start ffmpeg for channel {channel_id}: {e}"
-        print(msg)
-        log_file.write(msg + "\n")
-
-
+        log_file.write(f"❌ Failed to start ffmpeg: {e}\n")
+        log_file.close()
 
 def stop_ffmpeg(channel_id):
     proc = processes.get(channel_id)
     if proc and proc.poll() is None:
-        proc.terminate(); proc.wait()
+        proc.terminate()
+        proc.wait()
     processes.pop(channel_id, None)
     last_access.pop(channel_id, None)
-    if not DEBUG_KEEP_HLS:
-        os.system(f"rm -rf /dev/shm/{channel_id}")
-    else:
-        print(f"[DEBUG] Skipping deletion for /dev/shm/{channel_id}")
+    os.system(f"rm -rf /dev/shm/{channel_id}")
+    print(f"⏹️ Stopped FFmpeg for channel {channel_id}")
 
 def monitor_processes():
     while True:
@@ -118,14 +94,13 @@ def monitor_processes():
         now = time.time()
         for cid in list(last_access.keys()):
             if now - last_access[cid] > timeout_seconds:
-                print(f"[TIMEOUT] Channel {cid} inactive. Stopping.")
                 stop_ffmpeg(cid)
 
 @app.get("/stream/{channel}.m3u8")
 async def stream(channel: str):
     channel_id = int(channel) if channel.isdigit() else channel_map.get(channel)
     if channel_id is None or channel_id >= len(playlist):
-        return Response("Channel not found", status_code=404)
+        return Response("❌ Channel not found", status_code=404)
     if not ffmpeg_running(channel_id):
         start_ffmpeg(channel_id)
     last_access[channel_id] = time.time()
@@ -134,7 +109,10 @@ async def stream(channel: str):
 @app.get("/log/{channel_id}")
 async def get_log(channel_id: int):
     path = f"/opt/hlsp/log_{channel_id}.txt"
-    return Response(open(path).read(), media_type="text/plain") if os.path.exists(path) else Response("Log not found", status_code=404)
+    if os.path.exists(path):
+        with open(path) as f:
+            return Response(f.read(), media_type="text/plain")
+    return Response("❌ Log not found", status_code=404)
 
 @app.get("/admin")
 async def admin(request: Request):
