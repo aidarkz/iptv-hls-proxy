@@ -1,15 +1,12 @@
 # stream_router.py
-from fastapi import FastAPI, Request, Response
-from fastapi.responses import StreamingResponse, FileResponse
+from fastapi import FastAPI, Response
+from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
-from starlette.responses import HTMLResponse
 import subprocess
 import os
-import shutil
-import uvicorn
 import threading
-import time
 import uuid
+import time
 
 app = FastAPI()
 
@@ -19,17 +16,38 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 PLAYLIST_PATH = "/opt/hlsp/playlist.m3u"
 LOG_FOLDER = "/opt/hlsp"
 
-# Оригинальные URL по stream_id (можно заменить на загрузку из базы)
+# Словарь: stream_id -> оригинальный URL
 stream_map = {}
 
-# Загрузка и парсинг плейлиста в stream_map (при запуске)
+# Проверка валидности потока перед ffmpeg
+def is_stream_valid(url: str) -> bool:
+    try:
+        result = subprocess.run(
+            [
+                "ffprobe",
+                "-v", "error",
+                "-select_streams", "v:0",
+                "-show_entries", "stream=codec_name",
+                "-of", "default=noprint_wrappers=1:nokey=1",
+                url
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            timeout=10
+        )
+        return result.stdout.strip() != b""
+    except Exception:
+        return False
+
+# Загрузка stream_map из плейлиста
 def load_stream_map():
+    if not os.path.exists(PLAYLIST_PATH):
+        return
     with open(PLAYLIST_PATH, "r", encoding="utf-8") as f:
         lines = f.read().splitlines()
-
     for i in range(0, len(lines), 2):
-        if lines[i].startswith("#EXTINF") and i+1 < len(lines):
-            url = lines[i+1]
+        if lines[i].startswith("#EXTINF") and i + 1 < len(lines):
+            url = lines[i + 1]
             if "stream=" in url:
                 try:
                     stream_id = url.split("stream=")[1].split("&")[0]
@@ -37,13 +55,20 @@ def load_stream_map():
                 except IndexError:
                     continue
 
-# Прокси по ID
+# Прокси потоков
 @app.get("/stream/{stream_id}.m3u8")
 def stream_proxy(stream_id: str):
     if stream_id not in stream_map:
         return Response("Stream not found", status_code=404)
 
     stream_url = stream_map[stream_id]
+
+    # Проверка перед запуском
+    if not is_stream_valid(stream_url):
+        log_path = os.path.join(LOG_FOLDER, f"log_{stream_id}_error.txt")
+        with open(log_path, "w") as f:
+            f.write(f"Invalid stream: {stream_url}\n")
+        return Response("Stream is not valid", status_code=400)
 
     session_id = str(uuid.uuid4())[:8]
     stream_folder = f"/dev/shm/{session_id}"
@@ -72,7 +97,7 @@ def stream_proxy(stream_id: str):
 
     return HTMLResponse(f"<h2>Stream started. HLS path: /streams/{session_id}/playlist.m3u8</h2>")
 
-# Скачать плейлист с заменой на /stream/{id}.m3u8
+# Скачать плейлист с подменой ссылок
 @app.get("/playlist/download")
 def download_playlist():
     if not os.path.exists(PLAYLIST_PATH):
@@ -84,9 +109,8 @@ def download_playlist():
 
     for i in range(0, len(lines), 2):
         extinf = lines[i]
-        if i+1 < len(lines):
-            url = lines[i+1]
-            stream_id = ""
+        if i + 1 < len(lines):
+            url = lines[i + 1]
             if "stream=" in url:
                 try:
                     stream_id = url.split("stream=")[1].split("&")[0]
@@ -100,8 +124,9 @@ def download_playlist():
 
     return Response("\n".join(result), media_type="application/x-mpegURL")
 
-# Запускаем при старте
+# Загрузка карты при запуске
 load_stream_map()
 
 if __name__ == "__main__":
+    import uvicorn
     uvicorn.run(app, host="0.0.0.0", port=7000)
