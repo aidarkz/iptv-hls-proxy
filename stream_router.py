@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import os, time, subprocess, threading, requests
 from fastapi import FastAPI, Request, Response
-from fastapi.responses import RedirectResponse, HTMLResponse
+from fastapi.responses import RedirectResponse, HTMLResponse, FileResponse
 from fastapi.templating import Jinja2Templates
 import uvicorn
 
@@ -10,7 +10,7 @@ templates = Jinja2Templates(directory="/opt/hlsp/templates")
 
 PLAYLIST_PATH = "/opt/hlsp/playlist.m3u"
 PLAYLIST_SOURCE_URL = "https://m3u.ch/pl/f4cb98b64c59794f61effac58c5f57d2_7eeb72b1774fb97d1d7d662a7a519788.m3u"
-UPDATE_INTERVAL = 600  # 10 минут
+UPDATE_INTERVAL = 600
 
 playlist, channel_map = [], {}
 processes, last_access = {}, {}
@@ -22,11 +22,9 @@ def download_playlist():
         if r.status_code == 200:
             with open(PLAYLIST_PATH, "w", encoding="utf-8") as f:
                 f.write(r.text)
-            print("✔️ Playlist updated successfully.")
-        else:
-            print(f"⚠️ Playlist download failed: status {r.status_code}")
+            print("Playlist updated successfully.")
     except Exception as e:
-        print(f"❌ Playlist update error: {e}")
+        print(f"Playlist update error: {e}")
 
 def load_playlist_and_channels():
     global playlist, channel_map
@@ -44,9 +42,8 @@ def load_playlist_and_channels():
                     if name:
                         channel_map[name] = len(playlist) - 1
                     name = None
-        print(f"📺 Loaded {len(channel_map)} channels.")
     except Exception as e:
-        print(f"❌ Failed to load playlist: {e}")
+        print(f"Failed to load playlist: {e}")
 
 def update_loop():
     while True:
@@ -59,12 +56,10 @@ def ffmpeg_running(channel_id):
 
 def start_ffmpeg(channel_id):
     os.makedirs(f"/dev/shm/{channel_id}", exist_ok=True)
-    log_path = f"/opt/hlsp/log_{channel_id}.txt"
-    log_file = open(log_path, "w")
-    stream_url = playlist[channel_id]
+    log_file = open(f"/opt/hlsp/log_{channel_id}.txt", "w")
     cmd = [
-        "ffmpeg", "-re", "-user_agent", "VLC/3.0.18 LibVLC/3.0.18", "-i", stream_url,
-        "-c", "copy", "-f", "hls", "-hls_time", "4", "-hls_list_size", "5",
+        "ffmpeg", "-re", "-user_agent", "VLC/3.0.18 LibVLC/3.0.18", "-i", playlist[channel_id],
+        "-c", "copy", "-f", "hls", "-hls_time", "3", "-hls_list_size", "5",
         "-hls_flags", "delete_segments+program_date_time",
         "-hls_segment_filename", f"/dev/shm/{channel_id}/segment_%03d.ts",
         f"/dev/shm/{channel_id}/playlist.m3u8"
@@ -73,10 +68,8 @@ def start_ffmpeg(channel_id):
         proc = subprocess.Popen(cmd, stdout=log_file, stderr=log_file)
         processes[channel_id] = proc
         last_access[channel_id] = time.time()
-        print(f"▶️ Started FFmpeg for channel {channel_id}")
     except Exception as e:
-        log_file.write(f"❌ Failed to start ffmpeg: {e}\n")
-        log_file.close()
+        log_file.write(f"Failed to start ffmpeg: {e}\n")
 
 def stop_ffmpeg(channel_id):
     proc = processes.get(channel_id)
@@ -86,7 +79,6 @@ def stop_ffmpeg(channel_id):
     processes.pop(channel_id, None)
     last_access.pop(channel_id, None)
     os.system(f"rm -rf /dev/shm/{channel_id}")
-    print(f"⏹️ Stopped FFmpeg for channel {channel_id}")
 
 def monitor_processes():
     while True:
@@ -100,7 +92,7 @@ def monitor_processes():
 async def stream(channel: str):
     channel_id = int(channel) if channel.isdigit() else channel_map.get(channel)
     if channel_id is None or channel_id >= len(playlist):
-        return Response("❌ Channel not found", status_code=404)
+        return Response("Channel not found", status_code=404)
     if not ffmpeg_running(channel_id):
         start_ffmpeg(channel_id)
     last_access[channel_id] = time.time()
@@ -109,10 +101,7 @@ async def stream(channel: str):
 @app.get("/log/{channel_id}")
 async def get_log(channel_id: int):
     path = f"/opt/hlsp/log_{channel_id}.txt"
-    if os.path.exists(path):
-        with open(path) as f:
-            return Response(f.read(), media_type="text/plain")
-    return Response("❌ Log not found", status_code=404)
+    return Response(open(path).read(), media_type="text/plain") if os.path.exists(path) else Response("Log not found", status_code=404)
 
 @app.get("/admin")
 async def admin(request: Request):
@@ -127,6 +116,12 @@ async def admin(request: Request):
 async def stop_channel(channel_id: int):
     stop_ffmpeg(channel_id)
     return RedirectResponse("/admin", status_code=303)
+
+@app.get("/playlist/download")
+async def download_playlist():
+    if os.path.exists(PLAYLIST_PATH):
+        return FileResponse(PLAYLIST_PATH, media_type="application/octet-stream", filename="full_playlist.m3u")
+    return Response("Playlist not found", status_code=404)
 
 if __name__ == "__main__":
     download_playlist()
