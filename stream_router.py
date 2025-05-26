@@ -39,7 +39,12 @@ def load_stream_map():
                     stream_id = url.split("stream=")[1].split("&")[0]
                     name = lines[i].split(",")[-1].strip()
                     stream_map[stream_id] = url
-                    stream_status[stream_id] = {"name": name, "active": False, "last": None}
+                    if stream_id not in stream_status:
+                        stream_status[stream_id] = {
+                            "name": name,
+                            "active": False,
+                            "last": None
+                        }
                 except:
                     continue
 
